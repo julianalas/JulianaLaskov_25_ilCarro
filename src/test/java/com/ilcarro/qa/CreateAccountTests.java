@@ -10,7 +10,7 @@ public class CreateAccountTests extends TestBase{
     @BeforeMethod
     public void ensurePreconditions(){
         if(!isElementPresent(By.cssSelector("[href='/signup']"))){  //Sign Up not present
-           wd.findElement(By.xpath("//a[contains(., 'logOut')]")).click();  //click on Logout button
+            click(By.xpath("//a[contains(., 'logOut')]"));
         }
     }
 
@@ -18,35 +18,22 @@ public class CreateAccountTests extends TestBase{
     public void testSignUp(){
 
         // click On SignUp button
-        wd.findElement(By.cssSelector("[href='/signup']")).click();
+        click(By.cssSelector("[href='/signup']"));
         Assert.assertTrue(isElementPresent(By.cssSelector("form.signup__fields")));
 
         //fill registration form
-        wd.findElement(By.cssSelector("#first_name")).click();
-        wd.findElement(By.cssSelector("#first_name")).clear();
-        wd.findElement(By.cssSelector("#first_name")).sendKeys("AS");
+        type(By.cssSelector("#first_name"), "AB");
+        type(By.cssSelector("#second_name"), "CD");
+        type(By.cssSelector("#email"), "jj@uu112.com");
+        type(By.cssSelector("#password"), "1Bbbbbbbbbb");
 
-        wd.findElement(By.cssSelector("#second_name")).click();
-        wd.findElement(By.cssSelector("#second_name")).clear();
-        wd.findElement(By.cssSelector("#second_name")).sendKeys("FV");
+        click(By.cssSelector("#check_policy"));
 
-        wd.findElement(By.cssSelector("#email")).click();
-        wd.findElement(By.cssSelector("#email")).clear();
-        wd.findElement(By.cssSelector("#email")).sendKeys("jj@uu110.com");
-
-        wd.findElement(By.cssSelector("#password")).click();
-        wd.findElement(By.cssSelector("#password")).clear();
-        wd.findElement(By.cssSelector("#password")).sendKeys("1Bbbbbbbbbb");
-
-        wd.findElement(By.cssSelector("#check_policy")).click();
-
-
-
-
-        //click submit button
+        //click submit button (Y'alla!)
+        submitForm();
 
         //check, login form displayed
-
+        Assert.assertTrue(isLoginFormPresent());
 
     }
 

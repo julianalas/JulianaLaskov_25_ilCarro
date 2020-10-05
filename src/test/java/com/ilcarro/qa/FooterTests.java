@@ -9,7 +9,7 @@ public class FooterTests extends TestBase{
     @Test
     public void testSearch(){
         //click On Search button
-        wd.findElement(By.cssSelector("[class='footer__nav'] [href='/search']")).click();
+        click(By.cssSelector("[class='footer__nav'] [href='/search']"));
         //check for header presence "Find your car now!"
         Assert.assertTrue(isElementPresent(By.cssSelector("h3")));
     }

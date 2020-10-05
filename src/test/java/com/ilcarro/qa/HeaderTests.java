@@ -9,7 +9,7 @@ public class HeaderTests extends TestBase{
     @Test
     public void testSearch(){
         //click On Search button
-        wd.findElement(By.cssSelector("[class='header__nav desktop'] [href='/search']")).click();
+        click(By.cssSelector("[class='header__nav desktop'] [href='/search']"));
         //check for header presence "Find your car now!"
         Assert.assertTrue(isElementPresent(By.cssSelector("h3")));
     }
@@ -17,7 +17,7 @@ public class HeaderTests extends TestBase{
     @Test
     public void testLetTheCatWork(){
         //click On LetTheCatWork button
-        wd.findElement(By.cssSelector("[class='header__nav desktop'] [href='/car']")).click();
+        click(By.cssSelector("[class='header__nav desktop'] [href='/car']"));
         //check for header presence "Let the car work"
         Assert.assertTrue(isElementPresent(By.cssSelector("h3")));
     }
@@ -25,7 +25,7 @@ public class HeaderTests extends TestBase{
     @Test
     public void testSignUp(){
         //click On SignUp button
-        wd.findElement(By.cssSelector("[href='/signup']")).click();
+        click(By.cssSelector("[href='/signup']"));
         //check for header presence "Registration"
         Assert.assertTrue(isElementPresent(By.cssSelector("h2")));
     }
@@ -33,7 +33,7 @@ public class HeaderTests extends TestBase{
     @Test
     public void testLogIn(){
         //click On LogIn button
-        wd.findElement(By.cssSelector("[href='/login']")).click();
+        click(By.cssSelector("[href='/login']"));
         //check for header presence "Log in"
         Assert.assertTrue(isElementPresent(By.cssSelector("h2")));
     }

@@ -9,33 +9,41 @@ public class HeaderTests extends TestBase{
     @Test
     public void testSearch(){
         //click On Search button
-        click(By.cssSelector("[class='header__nav desktop'] [href='/search']"));
+        app.getHeader().clickOnSearchButtonFromHeader();
         //check for header presence "Find your car now!"
-        Assert.assertTrue(isElementPresent(By.cssSelector("h3")));
+        String textFromPage1 = app.getPage().getTextH3FromPage();
+        System.out.println(textFromPage1);
+        Assert.assertEquals(textFromPage1, "Find your car now!");
     }
 
     @Test
     public void testLetTheCatWork(){
         //click On LetTheCatWork button
-        click(By.cssSelector("[class='header__nav desktop'] [href='/car']"));
+        app.getHeader().clickOnLetTheCatWorkButtonFromHeader();
         //check for header presence "Let the car work"
-        Assert.assertTrue(isElementPresent(By.cssSelector("h3")));
+        String textFromPage2 = app.getPage().getTextH3FromPage();
+        System.out.println(textFromPage2);
+        Assert.assertEquals(textFromPage2, "Let the car work");
     }
 
     @Test
     public void testSignUp(){
         //click On SignUp button
-        click(By.cssSelector("[href='/signup']"));
+        app.getHeader().openRegistrationFormFromHeader();
         //check for header presence "Registration"
-        Assert.assertTrue(isElementPresent(By.cssSelector("h2")));
+        String tabName1 = app.getPage().getTextH2FromPage();
+        System.out.println(tabName1);
+        Assert.assertEquals(tabName1, "Registration");
     }
 
     @Test
     public void testLogIn(){
         //click On LogIn button
-        click(By.cssSelector("[href='/login']"));
+        app.getUser().clickLoginTabOnHeader();
         //check for header presence "Log in"
-        Assert.assertTrue(isElementPresent(By.cssSelector("h2")));
+        String tabName2 = app.getPage().getTextH2FromPage();
+        System.out.println(tabName2);
+        Assert.assertEquals(tabName2, "Log in");
     }
 
 

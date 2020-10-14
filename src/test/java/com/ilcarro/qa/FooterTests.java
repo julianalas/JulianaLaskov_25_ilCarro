@@ -9,16 +9,20 @@ public class FooterTests extends TestBase{
     @Test
     public void testSearch(){
         //click On Search button
-        click(By.cssSelector("[class='footer__nav'] [href='/search']"));
+        app.getFooter().clickOnSearchButtonFromFooter();
         //check for header presence "Find your car now!"
-        Assert.assertTrue(isElementPresent(By.cssSelector("h3")));
+        String textFromPage1 = app.getPage().getTextH3FromPage();
+        System.out.println(textFromPage1);
+        Assert.assertEquals(textFromPage1, "Find your car now!");
     }
 
     @Test
     public void testLetTheCatWork(){
         //click On LetTheCatWork button
-        wd.findElement(By.cssSelector("[class='footer__nav'] [href='/car']")).click();
+        app.getFooter().clickOnLetTheCatWorkButtonFromFooter();
         //check for header presence "Let the car work"
-        Assert.assertTrue(isElementPresent(By.cssSelector("h3")));
+        String textFromPage2 = app.getPage().getTextH3FromPage();
+        System.out.println(textFromPage2);
+        Assert.assertEquals(textFromPage2, "Let the car work");
     }
 }

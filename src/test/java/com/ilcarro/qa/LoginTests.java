@@ -1,6 +1,6 @@
 package com.ilcarro.qa;
 
-import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -8,31 +8,27 @@ public class LoginTests extends TestBase {
     @BeforeMethod
     public void ensurePreconditions(){
         //goTo ligin page
-        if(!isLoginFormPresent()){
-            click(By.cssSelector("[href='/login']"));
+        if(!app.getCar().isLoginFormPresent()){
+            //if user logged in, click logout, go to login
+            if(app.getUser().isUserLoggedIn()){
+                app.getUser().logOut();
+            }
+            app.getUser().clickLoginTabOnHeader();
         }
+
     }
 
     @Test
-    public void loginRegisteredUserPositeveTest(){
-        //jj@uu110.com
-        //jj@uu111.com
+    public void loginRegisteredUserPositiveTest()throws InterruptedException {
 
+        app.getUser().logIn();
 
+        Assert.assertTrue(app.getUser().isUserLoggedIn());
+        String email = app.getHeader().getEmailTextFromHeader();
+        System.out.println(email);
+        Assert.assertEquals(email,"jj@uu122.com" );
 
-        // fill Login form
-        type(By.name("email"), "jj@uu110.com");
-        type(By.name("password"), "1Bbbbbbbbbb");
-
-        wd.findElement(By.cssSelector("")).click();
-        wd.findElement(By.cssSelector("")).clear();
-        wd.findElement(By.cssSelector("")).sendKeys();
-
-        //submit login
-       submitForm();
-
-
-        //Assert userLoggedIn
     }
+
 
 }
